@@ -1,0 +1,151 @@
+{% macro sport(link_to_text, last_changed, piped_text, sport_type) -%}
+<div id="{{link_to_text}}" class="dynamic_input">
+    <h2 class="headline_of_content">
+        {{link_to_text}}
+    </h2>
+    <div class="under_head_line">
+        <span>Letzte Änderung am:<strong>{{last_changed}}</strong></span><span>Kategorie: <strong>{{sport_type}}</strong></span>
+    </div>
+    <p class="loaded_content">
+        {{piped_text|safe}}
+    </p>
+    
+        <button title="is not working at the moment. Sorry!" disabled onclick="subscribe_to_sport(event)">Subscribe to {{link_to_text}}</button>
+        <span id="span_{{link_to_text}}"></span>
+</div>
+{%- endmacro %}
+
+{% if load_serach %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="{{description}}">
+    <meta name="google-site-verification" content="MVpWdANTTiQ7KiPHDUuD7kuDfrF3DQsbTWtCwa0cMYI" />
+    {% if sport_name is defined and sport_name|length > 0 %}
+    <title>{{sport_name}} - Crawled von Hoschulsport Köln </title>
+    {% else %}
+    <title>Hoschulsport Köln Crawler! </title>
+    {% endif %}
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='styles/css_reset.css', _external=False) }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/layout.css', _external=False) }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/index.css', _external=False) }}">
+</head>
+
+<body class="container">
+    <span style="visibility: hidden;" id="sport_name">{{sport_name}}</span>
+    <span style="visibility: hidden;" id="sports_categories">{{sports_categories}}</span>
+    <span style="visibility: hidden;" id="sort_value">{{sort_value}}</span>
+
+    <form class="serach_form" enterkeyhint="search" onsubmit="return sports_with_para(event)">
+        <h2 class="headline_of_content"><a style="color: white;text-decoration: none;" href="/index"> Suchen </a></h2>
+        <label>Hier deinen Sport eingeben:
+            <input type="serach" onchange="on_search_box_change(event)" id="name" />
+        </label>
+        <div id="sports_categorie">
+        </div>
+        <small><label><input type="checkbox" disabled>
+                <- Ausgegraute Boxen liefern keine Ergebnisse.</label></small>
+        <!-- <div id="sort_radio">  
+        <label>
+            <input type="radio" checked  onchange="on_sort_change(event)" value="by_date_asc" name="sort">
+            Neueste Änderungen zuerst 
+        </label>
+        
+        <label>
+            <input type="radio" onchange="on_sort_change(event)" value="by_date_desc" name="sort">
+            Älteste Änderungen zuerst
+        </label>
+    <label>
+        <input type="radio" onchange="on_sort_change(event)" value="by_link_asc" name="sort">
+        Alphabetisch Aufsteigend <br>(Von A nach Z)
+    </label>
+      
+    <label>
+        <input type="radio" onchange="on_sort_change(event)" value="by_link_desc" name="sort">
+        Alphabetisch Absteigend <br>(Von Z nach A)
+    </label>
+    
+    </div> -->
+        <select onchange="on_sort_change(event)" name="sort_radio_name" id="sort_radio_drop_down">
+            <option value="by_date_asc" name="sort">
+                Neueste Änderungen zuerst
+            </option>
+            <option value="by_date_desc" name="sort">
+                Älteste Änderungen zuerst
+            </option>
+            <option value="by_link_asc" name="sort">
+                Alphabetisch Aufsteigend <br>(Von A nach Z)
+            </option>
+            <option value="by_link_desc" name="sort">
+                Alphabetisch Absteigend <br>(Von Z nach A)
+            </option>
+        </select>
+
+        <button type="submit">Suchen!</button>
+        <p>Gesucht wird nach: <span id="search_string">-</span></p>
+    </form>
+    {% endif %}
+
+    <!--     <p id="opposite_of_serach_form">Nicht das gewünschte Ergebniss? <button onclick="toggle_serach_form()">Neue Suche</button></p> -->
+    <article id="myArticle">
+        {% for temp_sport in data %}
+        {{sport(link_to_text=temp_sport.link_to_text, last_changed=temp_sport["last_changed"],
+        piped_text=temp_sport["piped_text"], sport_type=temp_sport["sport_type"])}}
+        {% endfor %}
+
+
+        {% if not data %}
+        <div id="no_result" class="dynamic_input">
+            <h2 class="headline_of_content">
+                Leider Keine Ergebnisse
+            </h2>
+            <div class="under_head_line">
+                Sorry :(
+            </div>
+            <p class="loaded_content">
+                Das koennte helfen:
+            </p>
+        </div>
+        {% endif %}
+    </article>
+
+    {% if load_serach %}
+    <footer>
+        <a href="#">About</a>
+    </footer>
+</body>
+
+<style>
+</style>
+<script src="{{ url_for('static',filename='scripts/index.js', _external=False) }}"> </script>
+<script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Hoschulsport Koeln Scraper",
+          "url": "https://hosposcraper.pythonanywhere.com/index/",
+          "sameAs" : ["https://www.hochschulsport-koeln.de"],
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://hosposcraper.pythonanywhere.com/index/{search_term_string}"
+            },
+            "query-input": {
+                "@type": "PropertyValueSpecification",
+                "valueRequired": true,
+                "valueMaxlength": 100,
+                "valueName": "search_term_string"
+            }
+          }
+        }
+    </script>
+
+</html>
+{% endif %}

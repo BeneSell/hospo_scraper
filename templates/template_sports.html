@@ -1,0 +1,13 @@
+{% macro input(link_to_text, last_changed, piped_text) -%}
+<div id="{{link_to_text}}" class="dynamic_input">
+    <h2 class="headline_of_content">
+       {{sport_type}}/{{link_to_text}}
+    </h2>
+    <div class="under_head_line">
+        Letzte Änderung am: {{last_changed}}
+    </div>
+    <p class="loaded_content">
+        {{piped_text}}
+    </p>
+</div>
+{%- endmacro %}

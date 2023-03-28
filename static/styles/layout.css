@@ -1,0 +1,220 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #50A5B1;
+  }
+
+.container {
+    --nr: 6; /* number of rows */
+    --nc: 6; /* number of columns */
+    --b: 2px; /* border length */
+  
+    /* width: 400px;
+    height: 200px;
+    margin: 10px auto; */
+  
+    background:
+      conic-gradient(from 90deg at var(--b) var(--b),
+        #50A5B1 90deg,#0000 0) calc(-1*var(--b)) calc(-1*var(--b))/
+        calc(100%/var(--nc)) calc(100%/var(--nr));
+  }
+
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+table thead tr {
+    background-color: #1A265A;
+    color: #ffffff;
+    text-align: left;
+}
+table th,
+table td {
+    padding: 12px 15px;
+}
+
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+table tbody tr:nth-of-type(odd) {
+    background-color: white;
+}
+
+table tbody tr.active-row {
+    font-weight: bold;
+    color: #1A265A;
+}
+.loaded_content {
+}
+strong::before{
+  content: "\a";
+    white-space: pre;
+}
+p{
+  margin: 0.5em;
+}
+.dynamic_input, .serach_form{
+  margin-top:3em;
+  margin-bottom:20em;
+  border-left: 3.5em solid #F1600D;
+  background-color: #FEF6ED;
+  padding-bottom: 2em;
+}
+
+
+.headline_of_content {
+  background-color: #F1600D;
+  margin-left: -0.1em;
+  padding: 1em;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+.under_head_line{
+  background-color: #ec8e57;
+  margin: 0;
+  margin-left: -0.1em;
+  padding: 1.5em;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+  }
+  #sports_categorie {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
+  @media screen and (min-width: 550px) {
+    #sports_categorie {
+        display: flex;
+        flex-direction: column;
+        height: 8em;
+        flex-wrap: wrap;
+      }
+    
+  }
+  @media screen and (min-width: 900px) {
+    #sports_categorie {
+        display: flex;
+        flex-direction: column;
+        height: 3em;
+        flex-wrap: wrap;
+      }
+    
+  }
+#sort_radio{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+/*Card!! */
+.card h1 {
+  background-color: #1A265A;
+  color: white;
+  width: 100%;
+  padding: 1em;
+  text-align: center;
+
+}
+.card img {
+  height: 5em;
+  width: 5em;
+}
+
+.card article {
+  display: grid;
+}
+
+.card .when {
+  grid-area: when;
+  width: 100%;
+}
+
+.card .where {
+  grid-area: where;
+  width: 100%;
+}
+
+@media screen and (min-width: 550px) {
+  .card .when {
+    grid-area: when;
+    width: auto;
+  }
+  
+  .card .where {
+    grid-area: where;
+    width: auto;
+  }
+}
+
+
+.card .who {
+  grid-area: who;
+}
+
+.card .extra_information {
+  grid-area: extra_information;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.card section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  border: #1A265A solid 0.5em;
+  padding: 1em;
+  margin: 0.1em;
+}
+
+.card {
+  display: grid;
+  background-color: #f3f3f3;
+  margin-bottom: 8em;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+      "when where"  
+      "who who" 
+      "extra_information extra_information";
+}
+@media screen and (min-width: 550px) {
+  .card {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+          "when where who"
+          "extra_information extra_information extra_information";
+  }
+}
+
+/*
+#00A0FE
+#F61732
+#FDB10E
+#169A13
+
+
+schwimmbad
+
+#50A5B1 background
+#F1600D highlight
+#FEF6ED box_background
+#1A265A tables
+
+
+*/

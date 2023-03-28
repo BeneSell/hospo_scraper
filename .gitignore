@@ -1,0 +1,10 @@
+botinfos.json
+*.sqlite
+for_server
+hoSpo_Scraper
+__pycache__
+0.3.9
+about_notes.sty
+subscriber.json
+support.ipynb
+update_id_file.txt

@@ -1,0 +1,10 @@
+@keyframes rotate_loading {
+    0%   {transform: rotate(90deg);}
+    100% {transform: rotate(450deg);}
+  }
+.loading_text::after {
+    animation: rotate_loading 0.5s infinite;
+    animation-timing-function:linear;
+    content: "\1F9B4";
+    display: inline-block;
+  }

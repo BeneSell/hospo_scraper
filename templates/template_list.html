@@ -1,0 +1,28 @@
+<article class="card">
+    <section class="when">
+        <img alt="Wann" src="{{url_for('static', filename='images/time.png', _external=False)}}" />
+        <p>Zeitpunkt</p>
+        <p>{{day}} <br> {{start_time}} - {{end_time}}</p>
+        <small>{{extra_information_1}}</small>
+    </section>
+    <section class="where">
+        <img alt="Wo" src="{{url_for('static', filename='images/location.png', _external=False)}}" />
+        <p>Ort</p>
+    <p>{{location}}</p>
+    </section>
+    <section class="who">
+        <img alt="Wann" src="{{url_for('static', filename='images/difficulty_meter.png', _external=False)}}" />
+    <p>Niveau</p>
+    <p>{{difficulty}}</p>
+    </section>
+    <section class="extra_information">
+        <small>*{{extra_information_2}}</small>
+        {% if extra_information_3 != "NA - Keine Angabe" %}
+        <small>**<a href="{{extra_information_3}}">{{extra_information_3}}</a></small>
+        {% else %}
+        <small>**{{extra_information_3}}</small>
+        {% endif %}
+        <small>***{{extra_information_4}}</small>
+        <small>{{count}}. von {{length}} Terminen.</small>
+    </section>
+</article>
