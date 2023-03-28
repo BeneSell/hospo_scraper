@@ -1,4 +1,15 @@
-Flask App Readme (Created by ChatGPT)
+Thats the website at the moment:
+![grafik](https://user-images.githubusercontent.com/45356497/228362765-1d8e700d-5982-4a80-aa8b-58f9a1d1a17d.png)
+
+
+Example of an article [https://hochschulsport-koeln.de/](https://hochschulsport-koeln.de/):
+![grafik](https://user-images.githubusercontent.com/45356497/228363661-a5151ab4-b62b-4066-8426-c93f46a31ff2.png)
+
+
+
+# Flask App Readme (Mostly created by ChatGPT)
+
+## Disclaimer all content is stolen from https://hochschulsport-koeln.de/
 
 This readme provides instructions on how to start the Flask app and lists the prerequisites required to run the app.
 Prerequisites
