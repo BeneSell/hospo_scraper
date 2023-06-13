@@ -51,7 +51,7 @@ headers.update(
 app = Flask(__name__)
 # api = Api(app)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
-app.config['SERVER_NAME'] = "127.0.0.1:5000"
+app.config['SERVER_NAME'] = "localhost:5000"
 
 
 with app.app_context():
@@ -251,6 +251,6 @@ def subscribe(link_to_text):
 # with session.cache_disabled():
 #
 #    session.get('http://httpbin.org/get')
-# if __name__ == '__main__':
+if __name__ == '__main__':
     # app.run(debug=True, use_reloader=False,host="0.0.0.0",port=5000, ssl_context="adhoc")
-app.run(debug=True, use_reloader=False,host="127.0.0.1",port=5000)
+    app.run(debug=True, use_reloader=False,host="0.0.0.0",port=5000)

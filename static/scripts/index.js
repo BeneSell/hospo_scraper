@@ -62,7 +62,7 @@ function change_description_tag(new_description) {
 }
 
 function load_XML_doc(path, params , show_content_func) {
-    var BASEURL = "http://127.0.0.1:5000"
+    var BASEURL = "http://localhost:5000"
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
@@ -271,7 +271,7 @@ function subscribe_to_sport(event) {
     url = "https://t.me/test_21091998_bot?start="+replaceUmlaute(link_to_text.replace("index.php/","").replace(/[\W_]+/g,""));
     params = []
 
-    var BASEURL = "http://127.0.0.1:5000"
+    var BASEURL = "http://172.17.0.2:5000"
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
