@@ -62,7 +62,7 @@ function change_description_tag(new_description) {
 }
 
 function load_XML_doc(path, params , show_content_func) {
-    var BASEURL = "http://localhost:5000"
+    var BASEURL = "http://127.0.0.1:5000"
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {

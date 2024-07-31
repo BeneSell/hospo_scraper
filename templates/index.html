@@ -1,7 +1,7 @@
-{% macro sport(link_to_text, last_changed, piped_text, sport_type) -%}
-<div id="{{link_to_text}}" class="dynamic_input">
+{% macro sport(link_to_text, last_changed, piped_text, sport_type, title) -%}
+<div id="{{title}}" class="dynamic_input">
     <h2 class="headline_of_content">
-        {{link_to_text}}
+        {{title}}
     </h2>
     <div class="under_head_line">
         <span>Letzte Änderung am:<strong>{{last_changed}}</strong></span><span>Kategorie: <strong>{{sport_type}}</strong></span>
@@ -10,7 +10,7 @@
         {{piped_text|safe}}
     </p>
     
-        <button title="is not working at the moment. Sorry!" disabled onclick="subscribe_to_sport(event)">Subscribe to {{link_to_text}}</button>
+        <button title="is not working at the moment. Sorry!" disabled onclick="subscribe_to_sport(event)">Subscribe to {{title}}</button>
         <span id="span_{{link_to_text}}"></span>
 </div>
 {%- endmacro %}
@@ -96,7 +96,7 @@
     <article id="myArticle">
         {% for temp_sport in data %}
         {{sport(link_to_text=temp_sport.link_to_text, last_changed=temp_sport["last_changed"],
-        piped_text=temp_sport["piped_text"], sport_type=temp_sport["sport_type"])}}
+        piped_text=temp_sport["piped_text"], sport_type=temp_sport["sport_type"], title=temp_sport["title"])}}
         {% endfor %}
 
 
